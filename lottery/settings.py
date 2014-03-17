@@ -10,6 +10,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
+SITE_ROOT = os.path.dirname(PROJECT_ROOT)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -33,10 +35,12 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.sites',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'lotto_web',
+    'django.contrib.humanize',
     'django.contrib.staticfiles',
+    'lotto_web',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -52,7 +56,7 @@ ROOT_URLCONF = 'lottery.urls'
 
 WSGI_APPLICATION = 'lottery.wsgi.application'
 
-TEMPLATE_DIRS = ('C:\\Users\\pollofrito\\Documents\\GitHub\\project\lottery\\templates')
+TEMPLATE_DIRS = (os.path.join(SITE_ROOT, 'templates'),)
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
@@ -60,7 +64,7 @@ TEMPLATE_DIRS = ('C:\\Users\\pollofrito\\Documents\\GitHub\\project\lottery\\tem
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'lottery_web.db'),
     }
 }
 
