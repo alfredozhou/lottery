@@ -8,20 +8,21 @@
  
  <h4 class="text-left muted">
   {% if mega_worthit %}
-    	<img src="http://www.sublight.si/Projects/ThumbsUporDown/images/up.png" height="20" width="20"/>
-      Mega Millions&nbsp;<img src="http://www.megamillions.com/Themes/MegaMillions/Content/Images/push_pin.png"/> is a good buy!
+    	<img src="/media/thumbs_up.png" height="20" width="20"/>
+      Mega Millions&nbsp;<img src="/media/megamillions.png"/> is a good buy!
+      <img src="/media/upload.png"><a href="upload-pics"/></img>
 	{% else %}
-      <img src="http://www.sublight.me/Projects/ThumbsUpOrDown/images/down.png" height="20" width="20"/>
-      Mega Millions&nbsp;<img src="http://www.megamillions.com/Themes/MegaMillions/Content/Images/push_pin.png"/>
+      <img src="/media/thumbs_down.png" height="20" width="20"/>
+      Mega Millions&nbsp;<img src="/media/megamillions.png"/>
     	is not worth it!
 	{% endif %}
  	Prize is ${{mega_prize | intcomma}}
   </h4>
  <h4 class="text-left muted">
  	{% if power_worthit %}
-    	<img src="http://www.sublight.si/Projects/ThumbsUporDown/images/up.png" height="20" width="20"/> Powerball&nbsp;<img src="http://www.worldcasinodirectory.com/images/icons/lottery/101.png" height="42" width="42"/> is a good buy!
+    	<img src="/media/thumbs_up.png" height="20" width="20"/> Powerball&nbsp;<img src="/media/powerball.png" height="42" width="42"/> is a good buy!
 	{% else %}
-    	<img src="http://www.sublight.me/Projects/ThumbsUpOrDown/images/down.png" height="20" width="20"/> Powerball&nbsp;<img src="http://www.worldcasinodirectory.com/images/icons/lottery/101.png" height="42" width="42"/> is not worth it!
+    	<img src="/media/thumbs_down.png" height="20" width="20"/> Powerball&nbsp;<img src="/media/powerball.png" height="42" width="42"/> is not worth it!
 	{% endif %}
  	Prize is ${{power_prize | intcomma}}
   </h4>
