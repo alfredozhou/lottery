@@ -58,6 +58,17 @@ WSGI_APPLICATION = 'lottery.wsgi.application'
 
 TEMPLATE_DIRS = (os.path.join(SITE_ROOT, 'templates'),)
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.6/howto/static-files/
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(SITE_ROOT, 'static'),
+    # os.path.join(SITE_ROOT, 'art'),
+    # os.path.join(SITE_ROOT, 'javascript'),
+    )
+
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
@@ -82,7 +93,3 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
-
-STATIC_URL = '/static/'
