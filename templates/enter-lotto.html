@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+  {% block content %}
+
+  <div class="jumbotron">
+   <div class="row-fluid marketing">
+ 
+ <h4 class="text-left muted">
+  {% if mega_worthit %}
+    	<img src="/static/art/thumbs_up.png" height="20" width="20"/>
+      Mega Millions&nbsp;<img src="/static/art/megamillions.png"/> is a good buy!
+      <img src="/static/art/upload.png"><a href="upload-pics"/></img>
+	{% else %}
+      <img src="/static/art/thumbs_down.png" height="20" width="20"/>
+      Mega Millions&nbsp;<img src="/static/art/megamillions.png"/>
+    	is not worth it!
+	{% endif %}
+ 	Prize is ${{mega_prize | intcomma}}
+  </h4>
+ <h4 class="text-left muted">
+ 	{% if power_worthit %}
+    	<img src="/static/art/thumbs_up.png" height="20" width="20"/> Powerball&nbsp;<img src="/static/art/powerball.png" height="42" width="42"/> is a good buy!
+	{% else %}
+    	<img src="/static/art/thumbs_down.png" height="20" width="20"/> Powerball&nbsp;<img src="/static/art/powerball.png" height="42" width="42"/> is not worth it!
+	{% endif %}
+ 	Prize is ${{power_prize | intcomma}}
+  </h4>
+ 	</div>
+
+
+
+{% endblock %}
