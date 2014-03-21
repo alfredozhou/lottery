@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'django.contrib.staticfiles',
     'lotto_web',
+    'south',
 )
 SITE_ID= 1
 

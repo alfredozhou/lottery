@@ -1,6 +1,9 @@
 from models import LotteryNumber, LotteryResult
 
 def winnings(lottery_Number, lottery_result):
+    if (lottery_Number.ticket.lottery_date != lottery_result.lottery_date):
+        return (set(), set())
+        
     lottoNum = set([lottery_Number.number1,
     			lottery_Number.number2,
     			lottery_Number.number3,
