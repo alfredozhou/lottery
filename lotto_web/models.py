@@ -20,22 +20,24 @@ class Game(models.Model):
 	def __unicode__(self):
 		return self.brand
 
-
 class LotteryTicket(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
-	name = models.CharField(max_length=100)
 	player = models.ForeignKey(Person)
+	# image = models.ImageField(upload_to="images", blank=True, null=True)
+	lottery_date = models.DateField(auto_now_add=False)
+	game = models.ForeignKey(Game)
+
+
+class LotteryNumber(models.Model):
+	created_at = models.DateTimeField(auto_now_add=True)
+	ticket = models.ForeignKey(LotteryTicket)
 	number1 = models.IntegerField()
 	number2 = models.IntegerField()
 	number3 = models.IntegerField()
 	number4 = models.IntegerField()
 	number5 = models.IntegerField()
 	ball = models.IntegerField()
-	game = models.ForeignKey(Game)
-	lottery_date = models.DateTimeField(auto_now_add=False)
-
-	def __unicode__(self):
-		return game+" "+number1+ " " +number2 + " " +number3+ " "+number4+" "+number5+" "+ball+" on "+lottery_date
+	
 
 class LotteryResult(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
@@ -47,8 +49,4 @@ class LotteryResult(models.Model):
 	number5 = models.IntegerField(null=True )
 	ball = models.IntegerField(null=True )
 	game = models.ForeignKey(Game)
-	lottery_date = models.DateTimeField(auto_now_add=False)
-
-	def __unicode__(self):
-		return game+" "+ number1+ " " +number2 + " " +number3+ " "+number4+" "+number5+" "+ball+" on "+lottery_date
-
+	lottery_date = models.DateField(auto_now_add=False)
