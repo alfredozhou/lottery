@@ -7,8 +7,10 @@ def get_prize():
     url = 'http://www.megamillions.com'
     r = requests.get(url)
     soup = BeautifulSoup(r.content)
-
-    amount = soup.findAll('div', attrs={'class':'home-next-drawing-estimated-jackpot-dollar-amount'})[0].string
+    moneyDiv = soup.findAll('div', attrs={'class':'home-next-drawing-estimated-jackpot-dollar-amount'})
+    if (moneyDiv is None):
+    	return "Unknown"
+    amount = moneyDiv[0].string
     return amount
 
 def threshold():
