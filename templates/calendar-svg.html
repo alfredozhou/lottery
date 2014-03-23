@@ -81,16 +81,16 @@ svg.selectAll(".month")
     .attr("class", "month")
     .attr("d", monthPath);
 
-d3.csv("dji.csv", function(error, csv) {
+d3.csv("lotto-purchases", function(error, csv) {
   var data = d3.nest()
     .key(function(d) { return d.Date; })
-    .rollup(function(d) { return (d[0].Close - d[0].Open) / d[0].Open; })
+    .rollup(function(d) { return d[0].HowMany; })
     .map(csv);
 
   rect.filter(function(d) { return d in data; })
       .attr("class", function(d) { return "day " + color(data[d]); })
     .select("title")
-      .text(function(d) { return d + ": " + percent(data[d]); });
+      .text(function(d) { return d + ": bought " + data[d]+" tickets"; });
 });
 
 function monthPath(t0) {

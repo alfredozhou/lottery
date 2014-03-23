@@ -17,12 +17,12 @@
     }
 
     /* Custom container */
-    .container-narrow {
+    .container-not-narrow {
       margin: 0 auto;
-      max-width: 700px;
+      max-width: 930px;
     }
 
-    .container-narrow > hr {
+    .container-not-narrow > hr {
       margin: 30px 0;
     }
 
@@ -40,7 +40,6 @@
       padding: 14px 24px;
     }
 
-
     /* Supporting marketing content */
     .marketing {
       margin: 60px 0;
@@ -54,13 +53,13 @@
 </head>
 <body>
 
-    <div class="container-narrow">
+    <div class="container-not-narrow">
 
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
           <li><a href="{% url 'home' %}">Home</a></li>
           <li><a href="{% url 'year-view' %}">Purchase History</a></li>
-          <li><a href="#">Logged in as</a></li>
+           <li><a href="#">Logged in as</a></li>
         </ul>
         <h3>
           <span class="fui-settings-16 muted">Lottery Genius!</span>
@@ -79,7 +78,7 @@
         {% endif %}
       </div>
 
-      <div class="container-narrow">
+      <div class="container-not-narrow">
         {% block content %}
         {% endblock %}
       </div>

@@ -9,22 +9,27 @@
  <h4 class="text-left muted">
   {% if mega_worthit %}
     	<img src="/static/art/thumbs_up.png" height="20" width="20"/>
-      Mega Millions&nbsp;<img src="/static/art/megamillions.png"/> is a good buy!
+      Yes buy Mega Millions&nbsp;<img src="/static/art/megamillions.png"/>!
       <img src="/static/art/upload.png"><a href="upload-pics"/></img>
+      Prize is ${{mega_prize | intcomma}}!
 	{% else %}
       <img src="/static/art/thumbs_down.png" height="20" width="20"/>
-      Mega Millions&nbsp;<img src="/static/art/megamillions.png"/>
-    	is not worth it!
+      Don't buy Mega Millions&nbsp;<img src="/static/art/megamillions.png"/>
+      Prize is only ${{mega_prize | intcomma}} :(
 	{% endif %}
- 	Prize is ${{mega_prize | intcomma}}
+ 
   </h4>
  <h4 class="text-left muted">
  	{% if power_worthit %}
-    	<img src="/static/art/thumbs_up.png" height="20" width="20"/> Powerball&nbsp;<img src="/static/art/powerball.png" height="42" width="42"/> is a good buy!
+    	<img src="/static/art/thumbs_up.png" height="20" width="20"/>
+      Yes buy Powerball&nbsp;<img src="/static/art/powerball.png" height="42" width="42"/>!
+      Prize is ${{power_prize | intcomma}}!
 	{% else %}
-    	<img src="/static/art/thumbs_down.png" height="20" width="20"/> Powerball&nbsp;<img src="/static/art/powerball.png" height="42" width="42"/> is not worth it!
+    	<img src="/static/art/thumbs_down.png" height="20" width="20"/> 
+      Don't buy Powerball&nbsp;<img src="/static/art/powerball.png" height="42" width="42"/>
+      Prize is only ${{power_prize | intcomma}} :(
 	{% endif %}
- 	Prize is ${{power_prize | intcomma}}
+ 	
   </h4>
  	</div>
 
