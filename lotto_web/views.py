@@ -13,6 +13,9 @@ def index(request):
 def yearView(request):
 	return render_to_response('lotto-years.html', context_instance=RequestContext(request))
 
+def svgView(request):
+	return render_to_response('calendar-svg.html', context_instance=RequestContext(request))
+
 def better_lotto_status(request):
 	t = loader.get_template('lotto-display.html')
 	million = 1000000

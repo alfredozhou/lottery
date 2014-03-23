@@ -19,6 +19,13 @@
   content: "";
 }
 
+iframe {
+    border: medium none;
+    height: 500px;
+    margin-top: 40px;
+    width: 960px;
+}
+
 .clearfix:after {
   clear: both;
 }
