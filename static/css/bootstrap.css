@@ -19,6 +19,13 @@
   content: "";
 }
 
+@font-face {
+    font-family: "Sanchez";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Sanchez"), local("Sanchez-Regular"), url("http://themes.googleusercontent.com/static/fonts/sanchez/v2/mx466fsxfR1AA3OwUm3waQ.woff") format("woff");
+}
+
 iframe {
     border: medium none;
     height: 500px;
@@ -251,7 +258,7 @@ box-shadow: 0 0 2px rgba(6,8,8,0.15);
 
 body {
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Sanchez", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #333333;

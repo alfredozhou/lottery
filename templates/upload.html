@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h3><center>Contact Us</center></h3>
-<form action='.' method='POST'>
-{% csrf_token %}
-{{ form.as_table }}
-<br/>
-<button type='submit' class='btn'>Submit</button>
+<div class="jumbotron">
+<h3>Upload your ticket</h3>
+<div class="row-fluid marketing">
+ <form action="{% url 'upload-pic' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+    <select name="game-ticket" class="dropdown">
+    {% for game in games %}
+		<option value="{{ game.brand }}">{{game.name}}</option>
+	{% endfor %}	
+	</select>           
+    <input id="id_image" type="file" class="btn-small" name="image">           
+	<input type="submit" class="btn-small btn btn-success" value="Upload" />
 </form>
+</div>
 
 {% endblock %}
