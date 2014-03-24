@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="jumbotron">
+<h2>Register</h2>
+<div class="row-fluid marketing">
+<form class="omb_loginForm" method="POST" autocomplete="off" action="{% url 'register' %}">
+<div class="input-group">
+	<span class="input-group-addon">
+	</span>
+	<input class="form-control" type="text" placeholder="your name" name="name">
+</div>
+<span class="help-block"></span>
+<div class="input-group">
+	<span class="input-group-addon">
+	</span>
+	<input class="form-control" type="text" placeholder="email address" name="username">
+</div>
+<span class="help-block"></span>
+<div class="input-group">
+	<span class="input-group-addon">
+	</span>
+	<input class="form-control" type="text" placeholder="phone number" name="phone_number">
+</div>
+<span class="help-block"></span>
+<div class="input-group">
+	<span class="input-group-addon">
+	</span>
+	<input class="form-control" type="password" placeholder="password" name="password">
+</div>
+<span class="help-block"></span>
+<div class="row-fluid marketing"/>
+<div class="input-group">
+	<span class="input-group-addon"></span>
+<button class="btn btn-large btn-primary form-control" type="submit">Create!</button>
+</div>
+</form>
+</div>
+
+
+{% endblock %}

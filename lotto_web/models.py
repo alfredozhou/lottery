@@ -5,7 +5,8 @@ class Person(models.Model):
 	name = models.CharField(max_length=100)
 	telephone = models.CharField(max_length=25, null=True)
 	email = models.CharField(max_length=50, null=True)
-
+	passwd_hash = models.CharField(max_length=50, null=True)
+	
 	def __unicode__(self):
 		return self.name
 
@@ -16,6 +17,7 @@ class Game(models.Model):
 	)
 
 	brand = models.CharField(max_length=3, choices=BRANDS)
+	description = models.CharField(max_length=40, blank=True)
 
 	def __unicode__(self):
 		return self.brand
