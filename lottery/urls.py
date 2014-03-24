@@ -13,6 +13,6 @@ urlpatterns = patterns('',
     url(r'^upload-pic$', 'lotto_web.ticketupload.upload', name='upload-pic'),
     url(r'^lotto-purchases$', 'lotto_web.numberOfTickets.lottosPurchased'),
     url(r'^svg-view$', 'lotto_web.views.svgView'),
- 	url(r'^time-to-buy/$', 'lotto_web.views.better_lotto_status'),
+ 	url(r'^time-to-buy/$', 'lotto_web.views.better_lotto_status', name='time-to-buy'),
     url(r'^admin/', include(admin.site.urls)),
 )
