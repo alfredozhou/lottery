@@ -9,9 +9,8 @@
  <h4 class="text-left muted">
   {% if mega_worthit %}
     	<img src="/static/art/thumbs_up.png" height="20" width="20"/>
-      Yes buy Mega Millions&nbsp;<img src="/static/art/megamillions.png"/>!
+      Yes buy Mega Millions&nbsp;<img src="/static/art/megamillions.png"/>! Prize is ${{mega_prize | intcomma}}!
       <img src="/static/art/upload.png"><a href="upload-pics"/></img>
-      Prize is ${{mega_prize | intcomma}}!
 	{% else %}
       <img src="/static/art/thumbs_down.png" height="20" width="20"/>
       Don't buy Mega Millions&nbsp;<img src="/static/art/megamillions.png"/>
@@ -22,8 +21,8 @@
  <h4 class="text-left muted">
  	{% if power_worthit %}
     	<img src="/static/art/thumbs_up.png" height="20" width="20"/>
-      Yes buy Powerball&nbsp;<img src="/static/art/powerball.png" height="42" width="42"/>!
-      Prize is ${{power_prize | intcomma}}!
+      Yes buy Powerball&nbsp;<img src="/static/art/powerball.png" height="42" width="42"/>! Prize is ${{power_prize | intcomma}}!
+      <img src="/static/art/upload.png"><a href="upload-pics"/></img>
 	{% else %}
     	<img src="/static/art/thumbs_down.png" height="20" width="20"/> 
       Don't buy Powerball&nbsp;<img src="/static/art/powerball.png" height="42" width="42"/>

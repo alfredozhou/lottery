@@ -35,6 +35,7 @@ body {
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
+
 var width = 960,
     height = 136,
     cellSize = 17; // cell size
@@ -42,6 +43,7 @@ var width = 960,
 var day = d3.time.format("%w"),
     week = d3.time.format("%U"),
     percent = d3.format(".1%"),
+    month_name = d3.time.format("%B"),
     format = d3.time.format("%Y-%m-%d");
 
 var color = d3.scale.quantize()
@@ -77,7 +79,7 @@ rect.append("title")
 
 svg.selectAll(".month")
     .data(function(d) { return d3.time.months(new Date(d, 0, 1), new Date(d + 1, 0, 1)); })
-  .enter().append("path")
+    .enter().append("path")
     .attr("class", "month")
     .attr("d", monthPath);
 
@@ -89,7 +91,7 @@ d3.csv("lotto-purchases", function(error, csv) {
 
   rect.filter(function(d) { return d in data; })
       .attr("class", function(d) { return "day " + color(data[d]); })
-    .select("title")
+      .select("title")
       .text(function(d) { return d + ": bought " + data[d]+" tickets"; });
 });
 
