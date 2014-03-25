@@ -5,7 +5,7 @@ class Person(models.Model):
 	name = models.CharField(max_length=100)
 	telephone = models.CharField(max_length=25, null=True)
 	email = models.CharField(max_length=50, null=True)
-	passwd_hash = models.CharField(max_length=50, null=True)
+	password = models.CharField(max_length=50, null=True)
 	
 	def __unicode__(self):
 		return self.name

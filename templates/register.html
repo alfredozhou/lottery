@@ -4,7 +4,7 @@
 <div class="jumbotron">
 <h2>Register</h2>
 <div class="row-fluid marketing">
-<form class="omb_loginForm" method="POST" autocomplete="off" action="{% url 'register' %}">
+<form class="omb_loginForm" method="POST" autocomplete="off" action="{% url 'register' %}">{% csrf_token %}
 <div class="input-group">
 	<span class="input-group-addon">
 	</span>
@@ -14,19 +14,25 @@
 <div class="input-group">
 	<span class="input-group-addon">
 	</span>
-	<input class="form-control" type="text" placeholder="email address" name="username">
+	<input class="form-control" type="text" placeholder="email address" name="email">
 </div>
 <span class="help-block"></span>
 <div class="input-group">
 	<span class="input-group-addon">
 	</span>
-	<input class="form-control" type="text" placeholder="phone number" name="phone_number">
+	<input class="form-control" type="text" placeholder="phone number" name="telephone">
 </div>
 <span class="help-block"></span>
 <div class="input-group">
 	<span class="input-group-addon">
 	</span>
 	<input class="form-control" type="password" placeholder="password" name="password">
+</div>
+<span class="help-block"></span>
+<div class="input-group">
+	<span class="input-group-addon">
+	</span>
+	<input class="form-control" type="password" placeholder="type password again" name="ver_password">
 </div>
 <span class="help-block"></span>
 <div class="row-fluid marketing"/>
