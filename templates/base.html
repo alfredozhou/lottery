@@ -19,8 +19,55 @@
     body {
       padding-top: 20px;
       padding-bottom: 40px;
+      line-height: 1;
+      background: #f9f9f9;
     }
 
+    .login-icon {
+        background-size: 12px 16px;
+        display: inline-block;
+        height: 16px;
+        margin-right: 8px;
+        margin-top: -3px;
+        vertical-align: middle;
+        width: 12px;
+    }
+
+    @font-face {
+        font-family: "Sanchez";
+        font-style: normal;
+        font-weight: 400;
+        src: local("Sanchez"), local("Sanchez-Regular"), url("http://themes.googleusercontent.com/static/fonts/sanchez/v2/mx466fsxfR1AA3OwUm3waQ.woff") format("woff");
+    }
+
+    iframe {
+        border: medium none;
+        height: 500px;
+        margin-top: 40px;
+        width: 960px;
+    }
+
+
+    .site-header {
+        height: 62px;
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        z-index: 2000;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        -moz-perspective: 1000;
+        -ms-perspective: 1000;
+        perspective: 1000;
+        -webkit-box-shadow: 0 0 2px rgba(6,8,8,0.15);
+        box-shadow: 0 0 2px rgba(6,8,8,0.15);
+    }
 
     /* Custom container */
     .container-not-narrow {
@@ -79,7 +126,7 @@
     
       <div class="masthead nav-collapse">
         <ul class="nav nav-pills pull-right">
-          {% if user.is_authenticated %}
+          {% if request.user.is_authenticated %}
             <li><a href="{% url 'home' %}">Hello {{ user.name }}</a></li>
             <li><a href="{% url 'year-view' %}">Purchase History</a></li>
             <li><a href="{% url 'sign-out' %}">Sign Out</a></li>

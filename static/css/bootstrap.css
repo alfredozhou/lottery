@@ -1,11 +1,11 @@
 /*!
  * Bootstrap v2.3.2
  *
- * Copyright 2012 Twitter, Inc
+ * Copyright 2013 Twitter, Inc
  * Licensed under the Apache License v2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ * Designed and built with all the love in the world by @mdo and @fat.
  */
 
 .clearfix {
@@ -26,13 +26,6 @@
     src: local("Sanchez"), local("Sanchez-Regular"), url("http://themes.googleusercontent.com/static/fonts/sanchez/v2/mx466fsxfR1AA3OwUm3waQ.woff") format("woff");
 }
 
-iframe {
-    border: medium none;
-    height: 500px;
-    margin-top: 40px;
-    width: 960px;
-}
-
 .clearfix:after {
   clear: both;
 }
@@ -43,16 +36,6 @@ iframe {
   text-shadow: none;
   background-color: transparent;
   border: 0;
-}
-
-.login-icon {
-    background-size: 12px 16px;
-    display: inline-block;
-    height: 16px;
-    margin-right: 8px;
-    margin-top: -3px;
-    vertical-align: middle;
-    width: 12px;
 }
 
 .input-block-level {
@@ -245,36 +228,13 @@ textarea {
   }
 }
 
-.site-header {
-height: 62px;
-overflow: hidden;
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-background-color: white;
-z-index: 2000;
--webkit-backface-visibility: hidden;
--moz-backface-visibility: hidden;
--ms-backface-visibility: hidden;
-backface-visibility: hidden;
--webkit-perspective: 1000;
--moz-perspective: 1000;
--ms-perspective: 1000;
-perspective: 1000;
--webkit-box-shadow: 0 0 2px rgba(6,8,8,0.15);
-box-shadow: 0 0 2px rgba(6,8,8,0.15);
-}
-
 body {
   margin: 0;
   font-family: "Sanchez", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #333333;
-  /*background-color: #ffffff;*/
-  line-height: 1;
-  background: #f9f9f9;
+  background-color: #ffffff;
 }
 
 a {
