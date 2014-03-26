@@ -79,13 +79,17 @@
     
       <div class="masthead nav-collapse">
         <ul class="nav nav-pills pull-right">
-          {% if user %}
+          {% if user.is_authenticated %}
             <li><a href="{% url 'home' %}">Hello {{ user.name }}</a></li>
             <li><a href="{% url 'year-view' %}">Purchase History</a></li>
             <li><a href="{% url 'sign-out' %}">Sign Out</a></li>
           {% else %}
+          {% if not at_home %}
           <li><a href="{% url 'home' %}">Home</a></li>
+          {% endif %}
+          {% if not at_sign_up %}
           <li><a href="{% url 'start-registering' %}">Sign Up</a></li>
+          {% endif %}
           <li class="dropdown"  id="menuLogin">
             <a id="navLogin" class="dropdown-toggle" href="#" data-toggle="dropdown">
               <img class="login-icon" src="/static/art/lock.png"/>Sign In <strong class="caret"></strong>

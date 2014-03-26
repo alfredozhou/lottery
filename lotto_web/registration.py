@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.template import RequestContext, loader
 from datetime import datetime
 from .models import Person
 from .forms import UserForm
@@ -11,8 +11,10 @@ from django.http import HttpResponseRedirect
 
 
 def start_registering(request):
-	return render_to_response('register.html', context_instance=RequestContext(request))
-
+	t = loader.get_template('register.html')
+	c = RequestContext(request, {'at_sign_up': True})
+	return HttpResponse(t.render(c))
+	
 def register(request):
 	user = None
 	if request.method == 'POST':
@@ -36,7 +38,7 @@ def register(request):
 	return yearView(request)
 
 def sign_in(request):
-	return render_to_response('lotto-years.html', context_instance=RequestContext(request))
+	return yearView(request)
 
 def sign_out(request):
 	del request.session['user']

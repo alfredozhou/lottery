@@ -10,10 +10,13 @@ import pdb
 
 def index(request):
 	uid = request.session.get('user')
+	t = loader.get_template('index.html')
 	if uid is None:
-		return render_to_response('index.html', {'user': None})
+		c = RequestContext(request, {'at_home': True})
+		return HttpResponse(t.render(c))
 	else:
-		return render_to_response('index.html', {'user': getUser(request)})
+		c = RequestContext(request, {'user': getUser(request), 'at_home': True})
+		return HttpResponse(t.render(c))
 
 def yearView(request):
 	user = getUser(request)
