@@ -1,7 +1,8 @@
 from django.db import models
 
-class Person(models.Model):
+class User(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
+	updated_at = models.DateTimeField(auto_now_add=True)
 	name = models.CharField(max_length=100)
 	telephone = models.CharField(max_length=25, null=True)
 	email = models.CharField(max_length=50, null=True)
@@ -24,7 +25,7 @@ class Game(models.Model):
 
 class LotteryTicket(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
-	player = models.ForeignKey(Person)
+	player = models.ForeignKey(User)
 	# image = models.ImageField(upload_to="images", blank=True, null=True)
 	lottery_date = models.DateField(auto_now_add=False)
 	name = models.CharField(max_length=100)

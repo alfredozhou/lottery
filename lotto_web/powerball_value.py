@@ -5,7 +5,10 @@ import math
 def get_prize():
     r = requests.get('http://www.powerball.com/')
     soup = BeautifulSoup(r.content)
-    full_amount = soup('table')[1].findAll('font', attrs={'size':'6'})[0].string
+    amount_table_content = soup('table')[1].findAll('font', attrs={'size':'6'})
+    if len(amount_table_content) < 1:
+    	return 0
+    full_amount = amount_table_content[0].string
     amount = [int(s.replace('$','')) for s in full_amount.split() if s.replace('$','').isdigit()]
     return amount[0]
 

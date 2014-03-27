@@ -5,7 +5,7 @@ from django.template import Context, loader
 from datetime import datetime
 import megamillions_lottery_value as megamillions
 import powerball_value as poweball
-from models import Person
+from models import User
 import pdb
 
 def index(request):
@@ -21,15 +21,12 @@ def index(request):
 def yearView(request):
 	user = getUser(request)
 	t = loader.get_template('lotto-years.html')
-	c = Context({
-		'fat': True,
-		'user': user
-		})
+	c = RequestContext(request, {'fat': True,'user': user})
 	return HttpResponse(t.render(c))
 
 def getUser(request):
 	uid = request.session.get('user')
-	user = Person.objects.get(pk=uid)
+	user = User.objects.get(pk=uid)
 	return user
 
 def svgView(request):
@@ -42,7 +39,7 @@ def better_lotto_status(request):
 	power_prize = int(poweball.get_prize()) * million
 	mega_threshold = megamillions.threshold()
 	power_threshold = poweball.threshold()
-	c = Context({
+	c = RequestContext(request, {
 		'mega_worthit': mega_prize > mega_threshold, 
 		'mega_prize': mega_prize,
 		'mega_threshold': mega_threshold,
