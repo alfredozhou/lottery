@@ -9,25 +9,14 @@ from models import User
 import pdb
 
 def index(request):
-	uid = request.session.get('user')
 	t = loader.get_template('index.html')
-	if uid is None:
-		c = RequestContext(request, {'at_home': True})
-		return HttpResponse(t.render(c))
-	else:
-		c = RequestContext(request, {'user': getUser(request), 'at_home': True})
-		return HttpResponse(t.render(c))
-
-def yearView(request):
-	user = getUser(request)
-	t = loader.get_template('lotto-years.html')
-	c = RequestContext(request, {'fat': True,'user': user})
+	c = RequestContext(request, {'at_home': True})
 	return HttpResponse(t.render(c))
-
-def getUser(request):
-	uid = request.session.get('user')
-	user = User.objects.get(pk=uid)
-	return user
+	
+def yearView(request):
+	t = loader.get_template('lotto-years.html')
+	c = RequestContext(request, {'fat': True})
+	return HttpResponse(t.render(c))
 
 def svgView(request):
 	return render_to_response('calendar-svg.html', context_instance=RequestContext(request))

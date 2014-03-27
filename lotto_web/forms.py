@@ -10,6 +10,9 @@ class SigninForm(forms.Form):
 	password = forms.CharField(required = True,
 	widget=forms.PasswordInput(render_value=False))
 
+	def addError(self, message):
+		self._errors[NON_FIELD_ERRORS] = self.error_class([message])
+
 class UserForm(forms.Form):
 	name = forms.CharField(required = True)
 	telephone = forms.IntegerField(required = True)

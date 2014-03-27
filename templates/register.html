@@ -3,38 +3,39 @@
 
 <div class="jumbotron">
 <h2>Register</h2>
-<div class="row-fluid marketing span3">
+<div class="row-fluid marketing">
 <form class="omb_loginForm" method="POST" autocomplete="off" action="{% url 'register' %}">{% csrf_token %}
+<span class="help-block"> {{ form.non_field_errors }} </span>
 <div class="input-group">
-	<span class="input-group-addon">
-	</span>
 	<input class="form-control" type="text" placeholder="your name" name="name">
 </div>
-<span class="help-block"></span>
+<span class="help-block">
+{{ form.name.errors }}
+</span>
 <div class="input-group">
-	<span class="input-group-addon">
-	</span>
 	<input class="form-control" type="text" placeholder="email address" name="email">
 </div>
-<span class="help-block"></span>
+<span class="help-block">
+{{ form.email.errors }}
+</span>
 <div class="input-group">
-	<span class="input-group-addon">
-	</span>
 	<input class="form-control" type="text" placeholder="phone number" name="telephone">
 </div>
-<span class="help-block"></span>
+<span class="help-block">
+{{ form.telephone.errors }}
+</span>
 <div class="input-group">
-	<span class="input-group-addon">
-	</span>
 	<input class="form-control" type="password" placeholder="password" name="password">
 </div>
-<span class="help-block"></span>
+<span class="help-block">
+{{ form.password.errors }}
+</span>
 <div class="input-group">
-	<span class="input-group-addon">
-	</span>
 	<input class="form-control" type="password" placeholder="type password again" name="ver_password">
 </div>
-<span class="help-block"></span>
+<span class="help-block">
+{{ form.ver_password.errors }}
+</span>
 <div class="row-fluid marketing"/>
 <div class="input-group">
 	<span class="input-group-addon"></span>

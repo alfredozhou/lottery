@@ -8,6 +8,8 @@ from .forms import SigninForm
 from .views import yearView
 from django.db import IntegrityError
 from django.http import HttpResponseRedirect
+from django.contrib.auth import authenticate
+import pdb
 
 
 
@@ -24,6 +26,7 @@ def register(request):
 			user = User(
 				name = form.cleaned_data['name'],
 				telephone = form.cleaned_data['telephone'],
+				username= form.cleaned_data['email'],
 				email = form.cleaned_data['email'],
 				password = form.cleaned_data['password'])
 			try:
@@ -35,31 +38,24 @@ def register(request):
 			return HttpResponseRedirect('/')
 	else:
 		form = UserForm()
-	request.session['user'] = user.pk
+	request.session['user'] = user
 	return yearView(request)
 
 def sign_in(request):
-	user = None
-	redirect_to = request.REQUEST.get('next', '')
-	if request.method == 'POST':
-		form = SigninForm(request.POST)
-		if form.is_valid():
-			results = User.objects.filter(email=form.cleaned_data['email'])
-			if len(results) == 1:
-				if results[0].check_password(form.cleaned_data['password']):
-					request.session['user'] = results[0].pk
-					return HttpResponseRedirect('/')
-				else:
-					form.addError('Incorrect email address or password')
-			else:
-				form.addError('Incorrect email address or password')
-	else:
-		form = SigninForm()
-		print form.non_field_errors()
-	return render_to_response('sign_in.html',{'form': form, 'user': user},context_instance=RequestContext(request))
-
+	form = SigninForm(request.POST)
+	if form.is_valid():
+		username = form.cleaned_data['email']
+		password = form.cleaned_data['password']
+		user = authenticate(username=username, password=password)
+		pdb.set_trace()
+		if user is not None:
+			login(request, user)
+			return HttpResponseRedirect('/')
+		else:
+			form.addError('Incorrect email address or password')
+	return render_to_response('sign_in.html', {'form': form},context_instance=RequestContext(request))
 
 
 def sign_out(request):
-	del request.session['user']
+	logout(request)
 	return HttpResponseRedirect('/')
