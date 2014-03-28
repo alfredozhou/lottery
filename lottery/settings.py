@@ -53,6 +53,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+
 ROOT_URLCONF = 'lottery.urls'
 
 WSGI_APPLICATION = 'lottery.wsgi.application'

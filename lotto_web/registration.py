@@ -31,16 +31,12 @@ def register(request):
 				password = form.cleaned_data['password'])
 			try:
 				user.save()
+				login(request, user)
+				return yearView(request)
 			except IntegrityError:
 				form.addError(user.email + ' is already a member')
-		else:
-			request.session['user'] = user.pk
-			return HttpResponseRedirect('/')
-	else:
-		form = UserForm()
-	request.session['user'] = user
-	return yearView(request)
-
+	return render_to_response('register.html', {'form': form, 'at_sign_up': True},context_instance=RequestContext(request))
+	
 def sign_in(request):
 	form = SigninForm(request.POST)
 	if form.is_valid():

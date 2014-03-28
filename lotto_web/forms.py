@@ -20,6 +20,9 @@ class UserForm(forms.Form):
 	password = forms.CharField(required = True,	label=(u'Password'), widget=forms.PasswordInput(render_value=False))
 	ver_password = forms.CharField(required = True, label=(u' Verify Password'), widget=forms.PasswordInput(render_value=False))
 
+	def addError(self, message):
+		self._errors[NON_FIELD_ERRORS] = self.error_class([message])
+
 	def clean(self):
 		cleaned_data = self.cleaned_data
 		password = cleaned_data.get('password')
