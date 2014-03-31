@@ -8,7 +8,7 @@ from .forms import SigninForm
 from .views import yearView
 from django.db import IntegrityError
 from django.http import HttpResponseRedirect
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 import pdb
 
 
@@ -23,8 +23,12 @@ def register(request):
 	if request.method == 'POST':
 		form = UserForm(request.POST)
 		if form.is_valid():
+			full_name = form.cleaned_data['name']
+			names = full_name.split()
 			user = User(
-				name = form.cleaned_data['name'],
+				first_name=names[0],
+				last_name=names[1] if len(names) > 1 else "",
+				name = full_name,
 				telephone = form.cleaned_data['telephone'],
 				username= form.cleaned_data['email'],
 				email = form.cleaned_data['email'],
