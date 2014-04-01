@@ -5,7 +5,7 @@ from django.template import Context, loader
 from datetime import datetime
 import megamillions_lottery_value as megamillions
 import powerball_value as poweball
-from models import User
+from models import Player
 import pdb
 
 def index(request):

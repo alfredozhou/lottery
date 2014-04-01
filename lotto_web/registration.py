@@ -2,13 +2,14 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext, loader
 from datetime import datetime
-from .models import User
+from .models import Player
 from .forms import UserForm
 from .forms import SigninForm
 from .views import yearView
 from django.db import IntegrityError
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 import pdb
 
 
@@ -20,21 +21,25 @@ def start_registering(request):
 	
 def register(request):
 	user = None
+	pdb.set_trace()
 	if request.method == 'POST':
 		form = UserForm(request.POST)
 		if form.is_valid():
 			full_name = form.cleaned_data['name']
 			names = full_name.split()
-			user = User(
+			user = User.objects.create_user(
 				first_name=names[0],
 				last_name=names[1] if len(names) > 1 else "",
-				name = full_name,
-				telephone = form.cleaned_data['telephone'],
 				username= form.cleaned_data['email'],
 				email = form.cleaned_data['email'],
 				password = form.cleaned_data['password'])
+			player = Player.objects.create(user=user, 
+				name=full_name, 
+				telephone = form.cleaned_data['telephone'])
 			try:
+				
 				user.save()
+				player.save()
 				login(request, user)
 				return yearView(request)
 			except IntegrityError:
@@ -47,7 +52,6 @@ def sign_in(request):
 		username = form.cleaned_data['email']
 		password = form.cleaned_data['password']
 		user = authenticate(username=username, password=password)
-		pdb.set_trace()
 		if user is not None:
 			login(request, user)
 			return HttpResponseRedirect('/')

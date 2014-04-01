@@ -1,9 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class User(User):
+class Player(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now_add=True)
+	user = models.ForeignKey(User)
 	name = models.CharField(max_length=100)
 	telephone = models.CharField(max_length=25, null=True)
 	
@@ -24,7 +25,7 @@ class Game(models.Model):
 
 class LotteryTicket(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
-	player = models.ForeignKey(User)
+	player = models.ForeignKey(Player)
 	# image = models.ImageField(upload_to="images", blank=True, null=True)
 	lottery_date = models.DateField(auto_now_add=False)
 	name = models.CharField(max_length=100)
