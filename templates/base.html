@@ -127,8 +127,8 @@
     
       <div class="masthead nav-collapse">
         <ul class="nav nav-pills pull-right">
-          {% if request.user.is_authenticated %}
-            <li><a href="{% url 'home' %}">Hello {{ user.name }}</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'home' %}">Hello {{ user.first_name }}</a></li>
             <li><a href="{% url 'year-view' %}">Purchase History</a></li>
             <li><a href="{% url 'sign-out' %}">Sign Out</a></li>
           {% else %}
