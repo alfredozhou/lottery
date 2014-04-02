@@ -6,12 +6,8 @@ from datetime import datetime
 from models import Game
 
 def show(request):
-	t = loader.get_template('upload.html')
 	lotto_games = Game.objects.all()
-	c = Context({
-		'games': lotto_games
-		})
-	return HttpResponse(t.render(c))
-
+	return render_to_response('upload.html',  {'games': lotto_games}, context_instance=RequestContext(request))
+	
 def upload(request):
 	return render_to_response('lotto-years.html', context_instance=RequestContext(request))
