@@ -5,7 +5,7 @@ from datetime import datetime
 from .models import Player
 from .forms import UserForm
 from .forms import SigninForm
-from .views import yearView
+from .views import yearView, index
 from django.db import IntegrityError
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
@@ -42,7 +42,7 @@ def register(request):
 				player.save()
 				user = authenticate(username=email, password=password)
 				login(request, user)
-				return render_to_response('index.html', {'user': user,'at_home': True}, context_instance=RequestContext(request))
+				return yearView(request)
 			except IntegrityError:
 				form.addError(user.email + ' is already a member')
 	return render_to_response('register.html', {'form': form, 'at_sign_up': True},context_instance=RequestContext(request))
@@ -55,7 +55,7 @@ def sign_in(request):
 		user = authenticate(username=username, password=password)
 		if user is not None:
 			login(request, user)
-			return render_to_response('lotto-years.html', {'fat': True,'user': user },context_instance=RequestContext(request))
+			return yearView(request)
 		else:
 			form.addError('Incorrect email address or password')
 	return render_to_response('sign_in.html', {'form': form},context_instance=RequestContext(request))
