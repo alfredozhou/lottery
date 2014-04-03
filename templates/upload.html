@@ -7,10 +7,10 @@
  <form action="{% url 'upload-pic' %}" class="navbar-form" method="post" enctype="multipart/form-data">{% csrf_token %}
     <select name="game-ticket" class="dropdown">
     {% for game in games %}
-		<option value="{{ game.brand }}">{{game.name}}</option>
+		<option value="{{ game.brand }}">{{game.description}}</option>
 	{% endfor %}	
 	</select>           
-    <input id="id_image" type="file" class="btn-small" name="image">           
+    <input id="id_image" type="file"  name="image">           
 	<input type="submit" class="btn-small btn btn-success" value="Upload" />
 </form>
 </div>

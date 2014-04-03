@@ -13,6 +13,10 @@ class SigninForm(forms.Form):
 	def addError(self, message):
 		self._errors[NON_FIELD_ERRORS] = self.error_class([message])
 
+class UploadFileForm(forms.Form):
+    title = forms.CharField(max_length=50)
+    file  = forms.FileField()
+
 class UserForm(forms.Form):
 	name = forms.CharField(required = True)
 	telephone = forms.IntegerField(required = True)

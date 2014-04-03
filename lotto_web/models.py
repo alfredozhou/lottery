@@ -26,7 +26,7 @@ class Game(models.Model):
 class LotteryTicket(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
 	player = models.ForeignKey(Player)
-	# image = models.ImageField(upload_to="images", blank=True, null=True)
+	location_to_image = models.CharField(max_length=100)
 	lottery_date = models.DateField(auto_now_add=False)
 	name = models.CharField(max_length=100)
 	bar_code =  models.CharField(max_length=100, null=True)
