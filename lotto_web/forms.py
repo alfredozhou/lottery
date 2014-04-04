@@ -14,8 +14,10 @@ class SigninForm(forms.Form):
 		self._errors[NON_FIELD_ERRORS] = self.error_class([message])
 
 class UploadFileForm(forms.Form):
-    title = forms.CharField(max_length=50)
-    file  = forms.FileField()
+    game = forms.CharField(max_length=50)
+    file  = forms.FileField(
+        label='Select a file'
+    )
 
 class UserForm(forms.Form):
 	name = forms.CharField(required = True)
