@@ -3,6 +3,7 @@ from django import forms
 from django.core.exceptions import NON_FIELD_ERRORS
 from django.utils.translation import ugettext_lazy as _
 from .models import LotteryTicket
+import datetime
 
 
 class SigninForm(forms.Form):
@@ -15,9 +16,9 @@ class SigninForm(forms.Form):
 
 class UploadFileForm(forms.Form):
     game = forms.CharField(max_length=50)
-    file  = forms.FileField(
-        label='Select a file'
-    )
+    image  = forms.FileField(label='Select a file')
+    lottery_date = forms.DateField(initial=datetime.date.today)
+
 
 class UserForm(forms.Form):
 	name = forms.CharField(required = True)

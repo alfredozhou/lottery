@@ -22,18 +22,17 @@ def svgView(request):
 	return render_to_response('calendar-svg.html', context_instance=RequestContext(request))
 
 def better_lotto_status(request):
-	t = loader.get_template('lotto-display.html')
 	million = 1000000
 	mega_prize = int(megamillions.get_prize()) * million
 	power_prize = int(poweball.get_prize()) * million
 	mega_threshold = megamillions.threshold()
 	power_threshold = poweball.threshold()
-	c = RequestContext(request, {
+	c = {
 		'mega_worthit': mega_prize > mega_threshold, 
 		'mega_prize': mega_prize,
 		'mega_threshold': mega_threshold,
 		'power_worthit': power_prize > power_threshold,
 		'power_prize': power_prize,
 		'power_threshold': power_threshold
-		})
-	return HttpResponse(t.render(c))
+		}
+	return render_to_response('lotto-display.html', c,  context_instance=RequestContext(request))

@@ -3,26 +3,33 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.template import Context, loader
 from datetime import datetime
-from models import Game
-import pdb
+from models import Game, LotteryTicket, Player
+from forms import UploadFileForm
+from django.views.generic import FormView, DetailView, ListView
+
 
 def show(request):
 	lotto_games = Game.objects.all()
-	pdb.set_trace()
 	return render_to_response('upload.html',  {'games': lotto_games}, context_instance=RequestContext(request))
 
-def handle_uploaded_file(f):
-	with open('some/file/name.txt', 'wb+') as destination:
-		for chunk in f.chunks():
-			destination.write(chunk)
+class LotteryImageUpload(FormView):
+	template_name = 'editTicket.html'
+	form_class = UploadFileForm
 
-def upload(request):
-	if request.method == 'POST':
-		form = UploadFileForm(request.POST, request.FILES)
-		if form.is_valid():
-			handle_uploaded_file(request.FILES['file'])
-    		return HttpResponseRedirect('/success/url/')
-    else:
-    	form = UploadFileForm()
-    return show(request)
-	
+	def form_valid(self, form):
+		ticket = UploadFileForm(image = self.get_form_kwargs().get('files')['image'],
+			game= self.get_form_kwargs().get('game-ticket'),
+			lottery_date = self.get_form_kwargs().get('lottery_date'))
+
+
+upload = LotteryImageUpload.as_view()
+
+class LotteryImageEdit(FormView):
+	form_class = UploadFileForm
+
+	def form_valid(self, form):
+		ticket = UploadFileForm(image = self.get_form_kwargs().get('files')['image'],
+			game= self.get_form_kwargs().get('game-ticket'),
+			lottery_date = self.get_form_kwargs().get('lottery_date'))
+
+edit_ticket = LotteryImageEdit.as_view()

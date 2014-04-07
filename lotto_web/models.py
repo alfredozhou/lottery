@@ -28,8 +28,6 @@ class LotteryTicket(models.Model):
 	player = models.ForeignKey(Player)
 	lottery_image = models.FileField(upload_to='documents/%Y/%m/%d')
 	lottery_date = models.DateField(auto_now_add=False)
-	name = models.CharField(max_length=100)
-	bar_code =  models.CharField(max_length=100, null=True)
 	game = models.ForeignKey(Game)
 
 	def __unicode__(self):

@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-
 <div class="jumbotron">
 <h3>Upload your ticket</h3>
 <div class="row-fluid marketing">
@@ -10,9 +9,21 @@
 		<option value="{{ game.brand }}">{{game.description}}</option>
 	{% endfor %}	
 	</select>           
-    <input id="id_image" type="file"  name="image">           
+    <input id="id_image" type="file"  name="image"/>
+    <div class="input-daterange" id="datepicker">
+    <input class="input-small" type="text" name="lottery_date"/>
+	</div>
 	<input type="submit" class="btn-small btn btn-success" value="Upload" />
+	<link rel="stylesheet" href="/static/css/datepicker.css"/>
+<script type='text/javascript' src="/static/js/jquery-1.js"> </script>
+<script type='text/javascript' src="/static/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('.input-daterange').datepicker({
+			todayBtn: "linked"
+		});
+	});
+</script>
 </form>
 </div>
-
 {% endblock %}

@@ -51,7 +51,13 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'lotto_web.LoginRequiredMiddleware.LoginRequiredMiddleware',
 )
+
+LOGIN_EXEMPT_URLS = (
+ r'^$',
+ r'^time-to-buy/$', # allow any URL under /legal/*
+) 
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
@@ -65,6 +71,10 @@ TEMPLATE_DIRS = (os.path.join(SITE_ROOT, 'templates'),)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_URL= '/sign-in/'
+
+MEDIA_ROOT = os.path.join(SITE_ROOT, 'media')
+MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = (
     os.path.join(SITE_ROOT, 'static'),
