@@ -17,6 +17,6 @@ urlpatterns = patterns('',
     url(r'^edit_ticket$', 'lotto_web.ticketupload.edit_ticket', name='edit_ticket'),
     url(r'^lotto-purchases$', 'lotto_web.numberOfTickets.lottosPurchased'),
     url(r'^svg-view$', 'lotto_web.views.svgView'),
- 	url(r'^time-to-buy/$', 'lotto_web.views.better_lotto_status', name='time-to-buy'),
-    url(r'^admin/', include(admin.site.urls)),
+ 	url(r'^time-to-buy$', 'lotto_web.views.better_lotto_status', name='time-to-buy'),
+    url(r'^admin', include(admin.site.urls)),
 )
