@@ -4,7 +4,7 @@ from django.template import RequestContext
 from django.template import Context, loader
 from datetime import datetime
 from models import Game, LotteryTicket, Player
-from forms import UploadFileForm
+from forms import UploadFileForm, EditUploadFileForm
 from django.views.generic import FormView, DetailView, ListView
 
 
@@ -32,11 +32,9 @@ class LotteryImageUpload(FormView):
 upload = LotteryImageUpload.as_view()
 
 class LotteryImageEdit(FormView):
-	form_class = UploadFileForm
+	form_class = EditUploadFileForm
 
 	def form_valid(self, form):
-		ticket = UploadFileForm(image = self.get_form_kwargs().get('files')['image'],
-			game= self.get_form_kwargs().get('game-ticket'),
-			lottery_date = self.get_form_kwargs().get('lottery_date'))
+		
 
 finishUploading = LotteryImageEdit.as_view()

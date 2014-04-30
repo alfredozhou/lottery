@@ -20,6 +20,10 @@ class UploadFileForm(forms.Form):
     lottery_date = forms.DateField(initial=datetime.date.today)
 
 
+class EditUploadFileForm(forms.Form):
+    numbers = forms.TextField(max_length=5000)
+
+
 class UserForm(forms.Form):
 	name = forms.CharField(required = True)
 	telephone = forms.IntegerField(required = True)
