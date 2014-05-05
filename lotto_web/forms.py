@@ -19,10 +19,10 @@ class UploadFileForm(forms.Form):
     image  = forms.FileField(label='Select a file')
     lottery_date = forms.DateField(initial=datetime.date.today)
 
-
 class EditUploadFileForm(forms.Form):
-    numbers = forms.TextField(max_length=5000)
-
+	image  = forms.FileField
+	numbers = forms.CharField(max_length=5000)
+	ticketId = forms.IntegerField
 
 class UserForm(forms.Form):
 	name = forms.CharField(required = True)

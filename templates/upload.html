@@ -4,7 +4,7 @@
 <h3>Upload your ticket</h3>
 <div class="row-fluid marketing">
  <form action="{% url 'upload-pic' %}" class="navbar-form" method="post" enctype="multipart/form-data">{% csrf_token %}
-    <select name="game-ticket" class="dropdown">
+    <select name="game" class="dropdown">
     {% for game in games %}
 		<option value="{{ game.brand }}">{{game.description}}</option>
 	{% endfor %}	

@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from django.conf.urls.static import static
 from django.contrib import admin
 import settings
 admin.autodiscover()
@@ -19,4 +20,4 @@ urlpatterns = patterns('',
     url(r'^svg-view$', 'lotto_web.views.svgView'),
  	url(r'^time-to-buy$', 'lotto_web.views.better_lotto_status', name='time-to-buy'),
     url(r'^admin', include(admin.site.urls)),
-)
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -4,9 +4,12 @@
 <h3>Please enter the ticket numbers</h3>
  <h4>OCR feature coming soon! :P</h4>
 <div class="row-fluid marketing">
- <form action="{% url 'finish-uploading' %}" class="navbar-form" >
+ <form action="{% url 'finish-uploading' %}" class="navbar-form"  method="post" >
  	{% csrf_token %}
-	{{ form.as_p }}
+ 	<input type="hidden" name="ticketId" value="{{ ticketId }}">
+	<img src="{{ MEDIA_URL }}{{ image }}" height="200" width="100"/>
+	<textarea rows="4" cols="40" name="numbers">
+	</textarea>
 	<input type="submit" class="btn-small btn btn-success" value="Submit" />
 </form>
 </div>
