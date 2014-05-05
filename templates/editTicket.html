@@ -7,7 +7,7 @@
  <form action="{% url 'finish-uploading' %}" class="navbar-form"  method="post" >
  	{% csrf_token %}
  	<input type="hidden" name="ticketId" value="{{ ticketId }}">
-	<img src="{{ MEDIA_URL }}{{ image }}" height="200" width="100"/>
+	<img src="{{ MEDIA_URL }}{{ image }}" height="400" width="200"/>
 	<textarea rows="4" cols="40" name="numbers">
 	</textarea>
 	<input type="submit" class="btn-small btn btn-success" value="Submit" />

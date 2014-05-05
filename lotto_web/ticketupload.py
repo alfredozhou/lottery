@@ -8,6 +8,7 @@ from forms import UploadFileForm, EditUploadFileForm
 from django.views.generic import FormView, DetailView, ListView
 import pdb
 from datetime import datetime
+from .views import yearView
 
 
 def show(request):
@@ -30,9 +31,27 @@ def upload(request):
 	ticket.save()
 	return render_to_response('editTicket.html', {'image': ticket.lottery_image, 'ticketId': ticket.id}, context_instance=RequestContext(request))
 
+def parseTicketNumbers(numbers_in_string, ticketId):
+	ticket = LotteryTicket.objects.get(id=ticketId)
+	numbers = []
+	for line in numbers_in_string.split('\n'):
+		linecontent = line.split(' ')
+		number = LotteryNumber(ticket=ticket, 
+			number1=Integer(linecontent[0]),
+			number2=Integer(linecontent[1]),
+			number3=Integer(linecontent[2]),
+			number4=Integer(linecontent[3]),
+			number5=Integer(linecontent[4]),
+			ball=Integer(linecontent[5]))
+		numbers.append(number)
+	return numbers
+
+
 def finishUploading(request):
 	form = EditUploadFileForm(request.POST)
 	form.is_valid()
-	pdb.set_trace()
-	print form.cleaned_data['numbers']
-	return
+	ticketnumbers = parseTicketNumbers(form.cleaned_data['numbers'], form.cleaned_data['ticketId'])
+	for number in ticketnumbers:
+		number.save()
+	return yearView(request);
+	
