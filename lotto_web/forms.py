@@ -22,7 +22,7 @@ class UploadFileForm(forms.Form):
 class EditUploadFileForm(forms.Form):
 	image  = forms.FileField
 	numbers = forms.CharField(max_length=5000)
-	ticketId = forms.IntegerField
+	ticketId = forms.CharField
 
 class UserForm(forms.Form):
 	name = forms.CharField(required = True)

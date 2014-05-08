@@ -50,7 +50,11 @@ def parseTicketNumbers(numbers_in_string, ticketId):
 def finishUploading(request):
 	form = EditUploadFileForm(request.POST)
 	form.is_valid()
-	ticketnumbers = parseTicketNumbers(form.cleaned_data['numbers'], form.cleaned_data['ticketId'])
+	text_values = form.cleaned_data['numbers']
+	pdb.set_trace()	
+	ticketId = int(form.cleaned_data['ticketId'])
+	ticketnumbers = parseTicketNumbers(text_values, ticketId)
+	pdb.set_trace()
 	for number in ticketnumbers:
 		number.save()
 	return yearView(request);
